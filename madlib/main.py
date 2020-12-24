@@ -19,4 +19,8 @@
 
 from samples import phrases
 
-print(phrases.compound_phrases())
+def paragraph(): return " ".join([phrases.random_compound_phrases() for _ in range(3)])
+
+text = "\n\n".join([paragraph() for _ in range(3)])
+
+print(text)

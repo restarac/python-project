@@ -1,4 +1,5 @@
 from samples import samples
+import random
 # https://www.thoughtco.com/phrase-grammar-1691625
 #  Types of Phrases With Examples
 #     Noun Phrase
@@ -16,7 +17,16 @@ def noum_phrases():
     return f'{samples.random_verb()} {samples.random_quantitative()} {samples.random_noun()} for {samples.random_pronouns()}'
 
 def verb_phrases():
-    return f'{samples.random_pronouns()} {samples.random_noun()} may {samples.random_verb()} {samples.random_quantitative()}'
+    return f'{samples.random_pronouns()} {samples.random_noun()} may {samples.random_pronouns()} {samples.random_verb()} {samples.random_quantitative()}'
 
 def compound_phrases():
-    return f'{noum_phrases()} because {verb_phrases()}.'
+    return f'{noum_phrases()} {samples.random_adverb_connection()} {verb_phrases()}.'
+
+def random_compound_phrases():
+    result = f'{noum_phrases()} {samples.random_adverb_connection()} {verb_phrases()}.'
+    if more():
+        result = " ".join([result, random_compound_phrases()])
+
+    return result
+
+def more(): return random.choice([True, False])
